@@ -51,6 +51,7 @@
     "node_modules",
     "static",
     "tsconfig.json",
-    "src/.generated"
+    "src/.generated",
+    "web-service"
   ]
 }

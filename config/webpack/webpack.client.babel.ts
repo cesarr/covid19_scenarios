@@ -106,17 +106,20 @@ function alias(development: boolean) {
 
   return productionAliases
 }
+// *********** 
+// By adding "static" the output from Webpack can be used in a Flask web application 
+// ***********
 
 function outputFilename(development: boolean, ext = 'js') {
   if (development || analyze) {
-    return `content/[name].${ext}`
+    return `static/content/[name].${ext}`
   }
 
   if (debuggableProd) {
-    return `content/[name].[chunkhash:8].${ext}`
+    return `static/content/[name].[chunkhash:8].${ext}`
   }
 
-  return `content/[chunkhash:8].${ext}`
+  return `static/content/[chunkhash:8].${ext}`
 }
 
 export default {
@@ -178,6 +181,9 @@ export default {
 
   module: {
     rules: [
+      // {
+      //   exclude: [path.resolve(__dirname, 'web-service')]
+      // },
       ...webpackLoadJavascript({
         babelConfig,
         options: { caller: { target: 'web' } },

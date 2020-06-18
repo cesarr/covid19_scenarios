@@ -1,6 +1,6 @@
 {
-  "name": "covid19_scenarios",
-  "version": "1.6.2",
+  "name": "outbreak-explorer",
+  "version": "0.2.0",
   "main": "index.js",
   "module": "src/index.tsx",
   "license": "MIT",
@@ -14,6 +14,8 @@
     "dev:nowatch": "cross-env NODE_ENV=development BABEL_ENV=development NODE_OPTIONS=--max_old_space_size=8192 webpack-dev-server --config config/webpack/webpack.client.babel.ts",
     "dev:clean": "yarn schema:clean && rimraf '.build/development/{*,.*}' 'node_modules/.cache'",
     "prod:build": "yarn schema:totypes && cross-env NODE_ENV=production BABEL_ENV=production NODE_OPTIONS=--max_old_space_size=8192 webpack --config config/webpack/webpack.client.babel.ts",
+    "prod:move": "mv -i ./.build/production/web/index.html ../web-service/templates/index.html && mv -i ./.build/production/web/* ../web-service/static/",
+    "flask:start": "cd ../web-service && export FLASK_APP=application.py && flask run",
     "prod:clean": "yarn schema:clean && rimraf '.build/production/{*,.*}' 'node_modules/.cache'",
     "prod:serve:nowatch": "babel-node --extensions \".ts\" ./src/server/server.ts",
     "prod:serve": "nodemon --config config/nodemon/serve.json",
