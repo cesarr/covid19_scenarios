@@ -78,14 +78,35 @@ function ResultsCardDisconnected({ canRun, hasResult, areResultsMaximized, toggl
           </Col>
         </Row>
 
+        <Row noGutters className="row-results-outbreak-map">
+          <Col>
+            <div ref={scrollTargetRef} />
+            <CollapsibleCard
+              className="card-trajectories"
+              identifier="outbreak-map"
+              title={<h3 className="d-inline text-truncate">{t('Outbreak Map (Under Development)')}</h3>}
+              help={t(`Map of how the simulated outbreak spreads over time`)}
+              defaultCollapsed = {false}
+            >
+              <Row noGutters>
+                <Col>
+                  <div id="map-container" className="map-container-style">The map is rendered here...</div>
+                  <PlotSpinner size={ICON_SIZE} />
+                </Col>
+              </Row>
+            </CollapsibleCard>
+          </Col>
+        </Row>
+
         <Row noGutters className="row-results-trajectories">
           <Col>
             <div ref={scrollTargetRef} />
-            <CardWithControls
+            <CollapsibleCard
               className="card-trajectories"
               identifier="trajectories"
-              labelComponent={<h3 className="d-inline text-truncate">{t('Outbreak trajectories')}</h3>}
+              title={<h3 className="d-inline text-truncate">{t('Outbreak trajectories')}</h3>}
               help={t(`Simulation results over time`)}
+              defaultCollapsed
             >
               <Row noGutters>
                 <Col>
@@ -93,16 +114,16 @@ function ResultsCardDisconnected({ canRun, hasResult, areResultsMaximized, toggl
                   <PlotSpinner size={ICON_SIZE} />
                 </Col>
               </Row>
-            </CardWithControls>
+            </CollapsibleCard>
           </Col>
         </Row>
 
         <Row noGutters className="row-results-age-distribution">
           <Col>
-            <CardWithControls
+            <CollapsibleCard
               className="card-age-distribution"
               identifier="age-distribution"
-              labelComponent={<h3 className="d-inline text-truncate">{t('Distribution across age groups')}</h3>}
+              title={<h3 className="d-inline text-truncate">{t('Distribution across age groups')}</h3>}
               help={t('Summary of outcomes per age group')}
             >
               <Row>
@@ -111,7 +132,7 @@ function ResultsCardDisconnected({ canRun, hasResult, areResultsMaximized, toggl
                   <PlotSpinner size={ICON_SIZE} />
                 </Col>
               </Row>
-            </CardWithControls>
+            </CollapsibleCard>
           </Col>
         </Row>
 
@@ -136,10 +157,10 @@ function ResultsCardDisconnected({ canRun, hasResult, areResultsMaximized, toggl
 
         <Row noGutters className="row-results-outcomes-table">
           <Col>
-            <CardWithControls
+            <CollapsibleCard
               className="card-outcomes"
               identifier="outcomes"
-              labelComponent={<h3 className="d-inline text-truncate">{t('Outcomes')}</h3>}
+              title={<h3 className="d-inline text-truncate">{t('Outcomes')}</h3>}
               help={t('Summary of outcomes for the entire population')}
             >
               <Row>
@@ -148,7 +169,7 @@ function ResultsCardDisconnected({ canRun, hasResult, areResultsMaximized, toggl
                   <PlotSpinner size={ICON_SIZE} />
                 </Col>
               </Row>
-            </CardWithControls>
+            </CollapsibleCard>
           </Col>
         </Row>
       </CardWithControls>

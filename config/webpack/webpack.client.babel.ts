@@ -182,7 +182,7 @@ export default {
   module: {
     rules: [
       // {
-      //   exclude: [path.resolve(__dirname, 'web-service')]
+      //   exclude: [path.resolve(__dirname, "web-service/*")]  
       // },
       ...webpackLoadJavascript({
         babelConfig,

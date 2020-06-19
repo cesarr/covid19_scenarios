@@ -51,7 +51,7 @@ function SeverityCardDisconnected({
         </>
       }
       help={t('Assumptions on severity which are informed by epidemiological and clinical observations in China')}
-      defaultCollapsed={false}
+      defaultCollapsed={true}
     >
       <SeverityTable />
       <SeverityCardInfo />

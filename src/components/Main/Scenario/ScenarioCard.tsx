@@ -95,7 +95,13 @@ export function ScenarioCardDisconnected({
             <ScenarioTitle title={currentScenarioName} onRename={handleScenarioRename} />
           </Col>
         </Row>
-
+        
+        <Row noGutters className="row-scenario-mitigation">
+          <Col className="col-scenario-mitigation">
+            <ScenarioCardContainment errors={errors} touched={touched} />
+          </Col>
+        </Row>
+        
         <Row noGutters className="row-scenario-population-epidemiological">
           <ColCustom {...colPopulation} className="col-scenario-population">
             <ScenarioCardPopulation errors={errors} touched={touched} />
@@ -105,13 +111,7 @@ export function ScenarioCardDisconnected({
             <ScenarioCardEpidemiological errors={errors} touched={touched} />
           </ColCustom>
         </Row>
-
-        <Row noGutters className="row-scenario-mitigation">
-          <Col className="col-scenario-mitigation">
-            <ScenarioCardContainment errors={errors} touched={touched} />
-          </Col>
-        </Row>
-
+        
         <Row noGutters className="row-scenario-severity">
           <Col className="col-scenario-severity">
             <SeverityCard />

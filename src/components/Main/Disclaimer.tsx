@@ -56,13 +56,13 @@ export function DisclaimerDisconnected({
 
   return (
     <Modal isOpen={isOpen} backdrop="static" fade={false} centered autoFocus>
-      <ModalHeader>{t(`COVID-19 Scenarios`)}</ModalHeader>
+      <ModalHeader>{t(`Outbreak Explorer`)}</ModalHeader>
       <ModalBody>
         <Row>
           <Col>
             <p>
               {t(
-                'This tool uses a mathematical model to simulate a variety of COVID-19 outcomes based on user-defined parameters. This output of the model depends on model assumptions and parameter choices.',
+                'This tool uses mathematical models to simulate a variety of COVID-19 outcomes based on user-defined parameters. This output of the model depends on model assumptions and parameter choices.',
               )}
             </p>
             <p>

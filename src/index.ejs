@@ -2,7 +2,7 @@
 <html lang="en">
   <head>
     <title><%= htmlWebpackPlugin.options.vars.title %></title>
-    <link rel="icon" href="/favicon.ico" />
+    <link rel="icon" href="/static/favicon.ico" />
     <meta charset="utf-8" />
     <meta
     name="viewport"
@@ -12,8 +12,8 @@
     <meta name="description" content="This tool uses a mathematical model to simulate a variety of COVID-19 outcomes based on user-defined parameters"/>
     <meta name="keywords" content="covid-19 sars-cov-2 coronavirus ncov open-source science research model hospital covid ventilator opensource modelling data neherlab outbreak simulation population"  />
     <!-- Open Graph general -->
-    <meta property="og:title" content="COVID-19 Scenarios"/>
-    <meta property="og:site_name" content="COVID-19 Scenarios"/>
+    <meta property="og:title" content="Outbreak Explorer"/>
+    <meta property="og:site_name" content="Outbreak Explorer"/>
     <meta property="og:url" content="<%= htmlWebpackPlugin.options.vars.webRoot %>" />
     <meta property="og:description" content="This tool uses a mathematical model to simulate a variety of COVID-19 outcomes based on user-defined parameters"/>
     <meta property="og:type" content="website"/>
@@ -23,14 +23,16 @@
     <meta name="twitter:url" content="<%= htmlWebpackPlugin.options.vars.webRoot %>" />
     <meta name="twitter:description" content="This tool uses a mathematical model to simulate a variety of COVID-19 outcomes based on user-defined parameters" />
 
-    <link rel="manifest" href="/manifest.json"/>
+    <link rel="manifest" href="/static/manifest.json"/>
     <link rel="apple-touch-icon" href="<%= htmlWebpackPlugin.options.vars.webRoot %>/icons/apple-icon-180x180.png">
-
-
-
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="">
+    <!-- <link as="style" href="/static/leaflet/1.6.0/leaflet.css"> -->
   </head>
   <body>
     <noscript>You need to enable JavaScript to run this app.</noscript>
     <div id="root"></div>
+    <!-- <script src="/static/leaflet/1.6.0/leaflet.js"></script> -->
+    <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+    <script src="/static/outbreak-map-controller.js"></script>
   </body>
 </html>

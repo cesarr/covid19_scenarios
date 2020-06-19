@@ -33,33 +33,33 @@ export function NavigationBarDisconnected({ pathname }: NavigationBarProps) {
 
   const navLinksLeft = useMemo(
     () => ({
-      '/': t('COVID-19 Scenarios'),
-      '/about': t('About'),
-      '/faq': t('FAQ'),
-      '/updates': t('Updates'),
-      '/team': t('Team'),
+      '/': t('Outbreak Explorer'),
+      // '/about': t('About'),
+      // '/faq': t('FAQ'),
+      // '/updates': t('Updates'),
+      // '/team': t('Team'),
     }),
     [t],
   )
 
   const navLinksRight = useMemo(
     () => [
-      {
-        title: t('neherlab'),
-        url: 'https://neherlab.org/',
-        alt: t('Link to webpage of NeherLab at University of Basel'),
-        icon: <BrandLogo viewBox="0 0 354.325 354.325" className="navigation-bar-company-logo" />,
-      },
-      {
-        title: t('Twitter'),
-        url: 'https://twitter.com/richardneher',
-        alt: t('Link to Twitter page of Richard Neher'),
-        icon: <FaTwitter size={28} color="#aaa" />,
-      },
+      // {
+      //   title: t('neherlab'),
+      //   url: 'https://neherlab.org/',
+      //   alt: t('Link to webpage of NeherLab at University of Basel'),
+      //   icon: <BrandLogo viewBox="0 0 354.325 354.325" className="navigation-bar-company-logo" />,
+      // },
+      // {
+      //   title: t('Twitter'),
+      //   url: 'https://twitter.com/richardneher',
+      //   alt: t('Link to Twitter page of Richard Neher'),
+      //   icon: <FaTwitter size={28} color="#aaa" />,
+      // },
       {
         title: t('GitHub'),
-        url: 'https://github.com/neherlab/covid19_scenarios',
-        alt: t('Link to Github page of the COVID-19 Scenarios project'),
+        url: 'https://github.com/cesarr/outbreak-explorer',
+        alt: t('Link to Github page of the Outbreak Explorer project'),
         icon: <FaGithub size={28} color="#aaa" />,
       },
     ],
