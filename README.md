@@ -3,7 +3,7 @@
 </h1>
 
 <blockquote align="center">
-The Outbreak Explorer is a web application that facilitates "what if?" inquiry of the COVID-19 outbreak within Leon County, Florida. The app can be extended to include other bounded territories and other infectious diseases. Outbreak Explorer builds on the <a href='https://covid19-scenarios.org/' target='_blank'>COVID-19 Scenarios</a> project with a focus on agent-based models.
+The Outbreak Explorer is a web application that facilitates "What if?" inquiry of the COVID-19 outbreak within Leon County, Florida. The app can be extended to include other bounded territories and other infectious diseases. Outbreak Explorer builds on the <a href='https://covid19-scenarios.org/' target='_blank'>COVID-19 Scenarios</a> project with a focus on agent-based models.
 </blockquote>
 
 
