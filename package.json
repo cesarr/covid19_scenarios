@@ -15,15 +15,16 @@
     "dev:build": "yarn dev:setenv && yarn dev:pack && yarn dev:move",
     "dev:clean": "yarn schema:clean && rimraf '.build/development/{*,.*}' 'node_modules/.cache'",
 
-    "prod:move:content": "mv -i ./.build/production/web/static/content ./.build/production/web/ && rm -r ./.build/production/web/static",
-    "prod:move:index": "mv -i ./.build/production/web/index.html ../outbreak-explorer-web-service/templates/index.html",
-    "prod:move:app": "mv -i ./.build/production/web/* ../outbreak-explorer-web-service/static/",
-    "prod:move:clean":"rm -r ../outbreak-explorer-web-service/static/*",
-    "prod:move": "yarn prod:move:content && yarn prod:move:index && yarn prod:move:app",
-    
     "prod:schemas": "yarn schema:totypes",
     "prod:pack": "cross-env NODE_ENV=production BABEL_ENV=production NODE_OPTIONS=--max_old_space_size=8192 webpack --config config/webpack/webpack.client.babel.ts",
-    "prod:build": "yarn prod:schemas && yarn prod:pack && yarn prod:move",
+    "prod:build": "yarn prod:schemas && yarn prod:pack",
+    
+    "prod:move:venv": "mv -i ./.build/production/web/static/content ./.build/production/web/ && rm -r ./.build/production/web/static",
+    "prod:move:content": "mv -i ./.build/production/web/static/content ./.build/production/web/ && rm -r ./.build/production/web/static",
+    "prod:move:index": "mv -i ./.build/production/web/index.html ./templates/index.html",
+    "prod:move:app": "mv -i ./.build/production/web/* ./static-build/",
+    "prod:move:clean":"rm -r ../outbreak-explorer-web-service/static/*",
+    "prod:move": "yarn prod:move:content && yarn prod:move:index && yarn prod:move:app",
     
     "prod:clean": "yarn schema:clean && rimraf '.build/development/{*,.*}' 'node_modules/.cache'",
     "prod:copy": "cp -r ./.build/production/web/index.html ../outbreak-explorer-web-service/templates/index.html && cp -r ./.build/production/web/* ../outbreak-explorer-web-service/static/",

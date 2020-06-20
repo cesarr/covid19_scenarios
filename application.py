@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request 
-from models import BaileyPikeModel
+from models import BaileyPikeModel, AgentFactory
 import json
 
 app = Flask(__name__)
@@ -42,4 +42,25 @@ def solve():
         return json_string
     else:
         return "The Outbreak Explorer solver only responds to POST requests."
+    
+
+@app.route('/agents', methods=['GET', 'POST'])
+def generate_agents():
+    if request.method == 'POST':
+        parameters = {'population':2380}
+    else:
+        parameters = {'population':2380}
+
+    factory = AgentFactory(parameters)
+    agents = factory.agents
+    agent_list = []
+    result = {}
+
+    for agent in agents:
+        agent_list.append(agent.to_dictionary())
+
+    result['agents'] = agent_list
+    json_string = json.dumps(result)
+
+    return json_string
     

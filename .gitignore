@@ -21,3 +21,6 @@ node_modules
 # Python
 venv
 __pycache__
+.ipynb_checkpoints
+*.ipynb
+.flaskenv

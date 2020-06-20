@@ -11,7 +11,7 @@ from mesa.space import NetworkGrid
 from mesa.datacollection import DataCollector
 from mesa_SIR import SIR
 import mesa_SIR.calculations_and_plots as c_p
-from .agent import Denizen
+from .agent import Denizen, DenizenAgent
 # from networkx import scale_free_graph
 
 import geopandas as gpd
@@ -224,6 +224,79 @@ class BaileyPikeModel(Model):
         point_list = gpd.GeoDataFrame(point_list)
         
         return point_list
+
+
+class AgentFactory(Model):
+    
+    def __init__(self, parameters):
+        super().__init__(Model)
+
+        self._agents = []
+        
+        if parameters == None:
+            self._population = 23800
+        
+        parameter = int(parameters['population'])
+        
+        if parameter < 0 or parameter > 3000:
+            self._population = 2380
+        else:
+            self._population = parameter
+
+        ### load the geojson that contains the census tracts and population
+        all_tracts = gpd.read_file('static/data/leon_tracts.geojson')
+        
+        # get list of random long lat points
+        point_list = self.get_point_list(all_tracts, self._population, ['073'] )
+        # row_index = 0
+        
+        for index in range(self._population):
+            denizen = DenizenAgent(index) #what was self.next_id()
+            denizen.census_tract_id = point_list.AFFGEOID.iloc[index]
+            point = point_list.geometry.iloc[index]
+            denizen.lat = point.y
+            denizen.lng = point.x
+            self._agents.append(denizen)
+    
+    #function to evaluate whether or not point is in boundary
+    def get_random_point_in_polygon(self, poly):
+        minx, miny, maxx, maxy = poly.bounds
+        
+        while True:
+            point = Point(random.uniform(minx, maxx), random.uniform(miny, maxy))
+            
+            if poly.contains(point):
+                 break
+            
+        return point
+             
+    def get_point_list(self, gdf, num_of_points, county_FP_list):  
+        # gdf should be a geopandas dataframe containing a geomety definition
+        # num_of_points is how many Point(lon,Lat) to randomly return
+        # coutny_FP_list is a list of all census County FP id numbers
+
+        # restrict the counties to only those of interest
+        gdf = gdf[gdf.COUNTYFP.isin(county_FP_list)]
+        #generate a weighted sample of tracts based on population
+        tracts = gdf.sample(n=num_of_points, weights = gdf['Estimate!!RACE!!Total population'].tolist(), replace = True)[['AFFGEOID','geometry']]
+        tracts = gpd.GeoDataFrame(tracts)
+        point_list = pd.DataFrame(columns = (['AFFGEOID','geometry']))
+        
+        # for each tract, pick a random point within the geometry of the tract and append
+        for row in tracts.itertuples():
+            df2 = pd.DataFrame([[row.AFFGEOID, self.get_random_point_in_polygon(row.geometry)]], columns = (['AFFGEOID','geometry']))
+            point_list = point_list.append(df2, ignore_index=True)
+        
+        point_list = gpd.GeoDataFrame(point_list)
+        
+        return point_list
+
+    @property
+    def agents(self):
+        """The agents property."""
+        return self._agents
+    
+
 
     
 
