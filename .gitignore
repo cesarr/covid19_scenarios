@@ -16,5 +16,11 @@ data/generated
 data/parsers.log
 data/raw_data
 node_modules
+.env
 
+# Python
 venv
+__pycache__
+.ipynb_checkpoints
+*.ipynb
+.flaskenv

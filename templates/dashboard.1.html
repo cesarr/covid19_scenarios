@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<meta name="description" content="">
+		<meta name="author" content="Cesar A. Rodriguez">
+		<title>Outbreak Explorer</title>
+		<link rel="canonical" href="https://getbootstrap.com/docs/4.5/examples/dashboard/">
+		<link rel="stylesheet" href="./static/bootstrap/4.5.0/css/bootstrap.css">
+		<link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="">
+		<link rel="stylesheet" href="./static/outbreak-explorer/dashboard.css">
+	</head>
+	<body>
+		<nav class="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
+			<a class="navbar-brand col-md-3 col-lg-2 mr-0 px-3" href="#">Outbreak Explorer</a>
+		    <!-- <button class="navbar-toggler position-absolute d-md-none" type="button" data-toggle="collapse" data-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation">
+		      <span class="navbar-toggler-icon"></span>
+		    </button> -->
+		    <ul class="navbar-nav px-3">
+		      <li class="nav-item text-nowrap">
+		        <a class="nav-link" href="">Version 0.1.0 alpha</a>
+		      </li>
+		    </ul>
+		</nav>
+		<div class="container-fluid">
+			<div class="row">
+				<nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
+					<div class="sidebar-sticky pt-3">
+						<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+							<span>Parameters</span> <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report"></a>
+						</h6>
+						<ul class="nav flex-column">
+							<li class="nav-item">
+								<a class="nav-link" href="#">Open</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">Save</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">Share</a>
+							</li>
+						</ul>
+						<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+							<span>Simulations</span> <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report"></a>
+						</h6>
+						<ul class="nav flex-column mb-2">
+							<li class="nav-item">
+								<a class="nav-link" href="#">Open</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">Save</a>
+							</li>
+						</ul>
+						<h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+							<span>Model</span> <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report"></a>
+						</h6>
+						<ul class="nav flex-column mb-2">
+							<li class="nav-item">
+								<a class="nav-link" href="#">Agents</a>
+							</li>
+							<li class="nav-item">
+								<a class="nav-link" href="#">Rules</a>
+							</li>
+						</ul>
+					</div>
+				</nav>
+				<main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+					<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+						<h4 class="h4">
+							Visualization Panel
+						</h4>
+					</div>
+					<div class="visualization-panel">
+						<div id="map-1" class="map"></div>
+						<div class="chart-container">
+							<canvas id="canvas-1" class="chart"></canvas>
+							<canvas id="canvas-2" class="chart"></canvas>
+						</div>
+					</div>
+					<div style="height: 50px; width:100%"></div><!-- Spacing -->
+					<div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
+						<h4 class="h4">
+							Control Panel
+						</h4>
+					</div><!-- <hr> -->
+					<div class="control-panel">
+						<div class="btn-toolbar mb-2 mb-md-0">
+							<div class="btn-group mr-2">
+								<button id="run-button" type="button" class="btn btn-sm btn-outline-secondary">Run Simulation</button> 
+								<button id="back-button" type="button" class="btn btn-sm btn-outline-secondary" disabled>Back</button> 
+								<button id="forward-button" type="button" class="btn btn-sm btn-outline-secondary" disabled>Forward</button> 
+								<input id="map-slider" class="map-slider" type="range" min="0" max="120" step="1" value="0" disabled> <label id="map-slider-label"></label>
+							</div>
+						</div>
+						<div style="height: 20px; width: 100%;"></div><!-- Spacing -->
+						<table id="parameters-table">
+							<tr>
+								<th><h6>Social Parameter</h6></th>
+								<th><h6>Value</h6></th>
+								<th><h6>Biomedical Parameter</h6></th>
+								<th><h6>Value</h6></th>
+							</tr>
+							<tr>
+								<td>
+									<label class="input-name-label" for="input-1">Number&nbsp;of&nbsp;People&nbsp;</label>
+									<img class="info-img" src="./static/icons/info-circle.svg" data-toggle="tooltip" data-placement="top" title="The number of people you want to include in the simulation. For now, the maximum number is 3000.">
+								</td>
+								<td>
+									<input id="input-1" type="number" min="100" max="3000" value="1000" data-param-id="population">
+								</td>
+								<td>
+									<label for="input-17">R0&nbsp;</label>
+									<img class="info-img" src="./static/icons/info-circle.svg" data-toggle="tooltip" data-placement="top" title="Basic reproduction number, the expected number of cases directly generated by one case.">
+								</td>
+								<td>
+									<input id="input-17" data-param-id="r0" class="slider" type="range" min="0" max="20" step="0.1" value="2.5" disabled> 
+									<label id="input-label-17"></label>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label for="input-2">Number&nbsp;of&nbsp;Days&nbsp;</label>
+									<img class="info-img" src="./static/icons/info-circle.svg" data-toggle="tooltip" data-placement="top" title="The number of days you want to include in the simulation. For now, the maximum is 120 days.">
+								</td>
+								<td>
+									<input id="input-2" type="number" min="1" max="120" value="30" data-param-id="steps">
+								</td>
+								<td>
+									<label for="input-3">Transmission&nbsp;Probability&nbsp;</label>
+									<img class="info-img" src="./static/icons/info-circle.svg" data-toggle="tooltip" data-placement="top" title="The probability that an infected person can infect another person.">
+								</td>
+								<td>
+									<input id="input-3" data-param-id="ptrans" class="slider" type="range" min="0" max="1" step="0.01" value="0.25"> 
+									<label id="input-label-3"></label>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label for="input-9">Initial&nbsp;Infected&nbsp;</label>
+									<img class="info-img" src="./static/icons/info-circle.svg" data-toggle="tooltip" data-placement="top" title="Initial probability of being infected.">
+								</td>
+								<td>
+									<input id="input-9" data-param-id="I0" class="slider" type="range" min="0" max="1" step="0.01" value="0.01"> <label id="input-label-9"></label>
+								</td>
+								<td>
+									<label for="input-11">Reinfection&nbsp;Probability&nbsp;</label>
+									<img class="info-img" src="./static/icons/info-circle.svg" data-toggle="tooltip" data-placement="top" title="Probability of becoming susceptible again after recovery.">
+								</td>
+								<td>
+									<input id="input-11" data-param-id="reinfection_rate" class="slider" type="range" min="0" max="1" step="0.01" value="0.00"> 
+									<label id="input-label-11"></label>
+								</td>
+								
+							</tr>
+							<tr>
+								<td>
+									<label for="input-10">Social&nbsp;Interactions&nbsp;</label>
+									<img class="info-img" src="./static/icons/info-circle.svg" data-toggle="tooltip" data-placement="top" title="Average number of social interactions per person per day.">
+								</td>
+								<td>
+									<input id="input-10" data-param-id="interactions" class="slider" type="range" min="0" max="100" step="1" value="5"> <label id="input-label-10"></label>
+								</td>
+								<td>
+									<label for="input-4">Progression&nbsp;Period&nbsp;</label>
+									<img class="info-img" src="./static/icons/info-circle.svg" data-toggle="tooltip" data-placement="top" title="Average number of days until a patient seeks treatment.">
+								</td>
+								<td>
+									<input id="input-4" data-param-id="progression_period" class="slider" type="range" min="0" max="100" step="1" value="3">
+									<label id="input-label-4"></label>
+									<label for="input-15">&nbsp;&nbsp;SD</label>
+									<input id="input-15" data-param-id="progression_sd" class="" type="number" min="0" max="100" step="1" value="2">
+									<img class="info-img" src="./static/icons/info-circle.svg" data-toggle="tooltip" data-placement="top" title="Standard deviation of the progression period.">
+								</td>
+								
+							</tr>
+							<tr>
+								<td>
+									<label for="input-5" disabled>Social&nbsp;Distancing&nbsp;</label>
+									<img class="info-img" src="./static/icons/info-circle.svg" data-toggle="tooltip" data-placement="top" title="Definition coming soon...">
+								</td>
+								<td>
+									<input id="input-5" data-param-id="social-distancing" class="slider" type="range" min="0" max="1" step="0.01" value="0.3" disabled> <label id="input-label-5"></label>
+								</td>
+								<td>
+									<label for="input-13">Recovery&nbsp;Days&nbsp;</label>
+									<img class="info-img" src="./static/icons/info-circle.svg" data-toggle="tooltip" data-placement="top" title="Average number of days until recovery.">
+								</td>
+								<td>
+									<input id="input-13" data-param-id="recovery_days" class="slider" type="range" min="0" max="100" step="1" value="21"> 
+									<label id="input-label-13"></label>
+									<label for="input-14">&nbsp;&nbsp;SD</label>
+									<input id="input-14" data-param-id="recovery_sd" class="" type="number" min="0" max="30" value="7">
+									<img class="info-img" src="./static/icons/info-circle.svg" data-toggle="tooltip" data-placement="top" title="Standard deviation of the recovery days.">
+								</td>
+								
+							</tr>
+							<tr>
+								<td>
+									<label for="input-6" disabled>Mask&nbsp;Wearing&nbsp;</label>
+									<img class="info-img" src="./static/icons/info-circle.svg" data-toggle="tooltip" data-placement="top" title="Definition coming soon...">
+								</td>
+								<td>
+									<input id="input-6" data-param-id="mask-wearing" class="slider" type="range" min="0" max="1" step="0.01" value="0.33" disabled> <label id="input-label-6"></label>
+								</td>
+								<td>
+									<label for="input-7">Hospitalization&nbsp;Probability&nbsp;</label>
+									<img class="info-img" src="./static/icons/info-circle.svg" data-toggle="tooltip" data-placement="top" title="Probability of needing to be hospitalized.">
+								</td>
+								<td>
+									<input id="input-7" data-param-id="severe" class="slider" type="range" min="0" max="1" step="0.01" value="0.18"> <label id="input-label-7"></label>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label for="input-8">Prevalence&nbsp;of&nbsp;Immunity&nbsp;</label>
+									<img class="info-img" src="./static/icons/info-circle.svg" data-toggle="tooltip" data-placement="top" title="Herd immunity and vaccination.">
+								</td>
+								<td>
+									<input id="input-8" data-param-id="immunity" class="slider" type="range" min="0" max="1" step=".01" value=".03" disabled> <label id="input-label-8"></label>
+								</td>
+								<td>
+									<label for="input-12">Death&nbsp;Probability&nbsp;</label>
+									<img class="info-img" src="./static/icons/info-circle.svg" data-toggle="tooltip" data-placement="top" title="Probability of dying after being infected.">
+								</td>
+								<td>
+									<input id="input-12" data-param-id="death_rate" class="slider" type="range" min="0" max="1" step="0.0001" value="0.0193"> 
+									<label id="input-label-12"></label>
+								</td>
+							</tr>
+							<tr>
+								<td>
+									<label for="input-16">Visitors&nbsp;</label>
+									<img class="info-img" src="./static/icons/info-circle.svg" data-toggle="tooltip" data-placement="top" title="Average number of non-residents that visit Leon County per day.">
+								</td>
+								<td>
+									<input id="input-16" data-param-id="visitors" class="slider" type="range" min="0" max="1000" step="1" value="100" disabled> 
+									<label id="input-label-16"></label>
+								</td>
+							</tr>
+						</table>
+					</div>
+					<div style="height: 200px; width: 100%;"></div><!-- Spacing -->
+					<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script> 
+					<script>window.jQuery || document.write('<script src="../assets/js/vendor/jquery.slim.min.js"><\/script>')</script> 
+					<script src="./static/bootstrap/4.5.0/js/bootstrap.bundle.js"></script> 
+					<script src="https://cdnjs.cloudflare.com/ajax/libs/feather-icons/4.9.0/feather.min.js"></script> 
+					<script src="./static/chart.js/2.9.3/Chart.min.js"></script> 
+					<script src="./static/chart.js/2.9.3/utils.js"></script> 
+					<script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script> 
+					<script src="./static/outbreak-explorer/dashboard-controller.js"></script>
+				</main>
+			</div>
+		</div>
+	</body>
+</html>
