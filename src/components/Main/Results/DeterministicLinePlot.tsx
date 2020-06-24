@@ -60,6 +60,7 @@ function labelFormatter(value: string | number): React.ReactNode {
 
 function legendFormatter(enabledPlots: string[], value?: LegendPayload['value'], entry?: LegendPayload) {
   let activeClassName = 'legend-inactive'
+  
   if (entry?.dataKey && enabledPlots.includes(entry.dataKey)) {
     activeClassName = 'legend'
   }
