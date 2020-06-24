@@ -72,9 +72,9 @@ export function NavigationBarDisconnected({ pathname }: NavigationBarProps) {
       role="navigation"
       data-testid="NavigationBar"
     >
-      <Link className="navbar-brand" to="/" role="button">
+      {/* <Link className="navbar-brand" to="/" role="button">
         <BrandLogo viewBox="0 0 354.325 354.325" className="navigation-bar-product-logo" />
-      </Link>
+      </Link> */}
 
       <ul className="navbar-nav">
         {Object.entries(navLinksLeft).map(([url, text]) => {

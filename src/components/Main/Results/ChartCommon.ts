@@ -34,19 +34,19 @@ export const DATA_POINTS = {
 
 export const defaultEnabledPlots = [
   /* Computed */
-  'susceptible',
+  // 'susceptible',
   'infectious',
-  'severe',
-  'recovered',
-  'weeklyFatality',
-  'hospitalBeds',
-  'ICUbeds',
+  // 'severe',
+  // 'recovered',
+  // 'weeklyFatality',
+  // 'hospitalBeds',
+  // 'ICUbeds',
   /* Observed */
-  'cases',
-  'currentHospitalized',
-  'ICU',
-  'newCases',
-  'weeklyDeaths',
+  // 'cases',
+  // 'currentHospitalized',
+  // 'ICU',
+  'newCases'
+  // 'weeklyDeaths',
 ]
 
 export const colors = {
