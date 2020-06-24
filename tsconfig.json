@@ -50,8 +50,8 @@
     "cypress",
     "node_modules",
     "static",
+    "static-items",
     "tsconfig.json",
-    "src/.generated",
-    "web-service"
+    "src/.generated"
   ]
 }
