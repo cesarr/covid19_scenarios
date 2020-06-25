@@ -83,7 +83,10 @@ function getWebRoot() {
 }
 
 const { moduleRoot, pkg } = findModuleRoot()
-const buildPath = path.join(moduleRoot, '.build', analyze ? 'analyze' : MODE, 'web') // prettier-ignore
+
+// This statement instructs Webpack to save the build to the "static" directory
+const buildPath = path.join(moduleRoot, 'static') // prettier-ignore
+// const buildPath = path.join(moduleRoot, '.build', analyze ? 'analyze' : MODE, 'web') // prettier-ignore
 
 function alias(development: boolean) {
   let productionAliases: Record<string, string> = {
@@ -159,7 +162,7 @@ export default {
     contentBase: path.join(buildPath, '..'),
     before: (app: express.Application) => {
       app.use(express.static(path.join(buildPath, 'sourcemaps')))
-      app.use(express.static(path.join(moduleRoot, 'static')))
+      app.use(express.static(path.join(moduleRoot, 'static-items')))
     },
     compress: true,
     disableHostCheck: true,
@@ -306,7 +309,7 @@ export default {
           '!src/*generated*/**/*',
           '!src/algorithms/__test_data__/**/*',
           '!src/styles/**/*',
-          '!static/**/*',
+          '!static-items/**/*',
         ],
       }),
 
@@ -361,7 +364,7 @@ export default {
       // TODO: remove ignores when typings update to v6.x.x
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore
-      new CopyWebpackPlugin({ patterns: [{ from: './static', to: './' }] }),
+      new CopyWebpackPlugin({ patterns: [{ from: './static-items', to: './' }] }),
 
     ...(production && !analyze
       ? webpackCompression({
