@@ -116,33 +116,45 @@
           "seasonalForcing": 0.0
         },
         "mitigation": {
-					"mitigationIntervals": [
-						{
-							"color": "#cccccc",
-							"name": "Social Distancing",
-							"timeRange": {
-								"begin": "2020-03-24",
-								"end": "2020-06-01"
-							},
-							"transmissionReduction": {
-								"begin": 65.0,
-								"end": 75.0
-							}
+          "mitigationIntervals": [
+            {
+              "color": "#cccccc",
+              "name": "Social Distancing",
+              "timeRange": {
+                "begin": "2020-03-27T16:00:00.000Z",
+                "end": "2020-05-03T16:00:00.000Z"
+              },
+              "transmissionReduction": {
+                "begin": 65,
+                "end": 80
+              }
             },
             {
-							"color": "#00FFFF",
-							"name": "Phase I Opening",
-							"timeRange": {
-								"begin": "2020-06-01",
-								"end": "2020-07-15"
-							},
-							"transmissionReduction": {
-								"begin": 50.0,
-								"end": 60.0
-							}
-						}
-					]
-				},
+              "color": "#00FFFF",
+              "name": "Recovery Phase 1",
+              "timeRange": {
+                "begin": "2020-05-04T00:00:00.000Z",
+                "end": "2020-06-04T16:00:00.000Z"
+              },
+              "transmissionReduction": {
+                "begin": 70,
+                "end": 80
+              }
+            },
+            {
+              "color": "#00FFFF",
+              "name": "Recovery Phase 2",
+              "timeRange": {
+                "begin": "2020-06-05T00:00:00.000Z",
+                "end": "2020-07-04T00:00:00.000Z"
+              },
+              "transmissionReduction": {
+                "begin": 50,
+                "end": 60
+              }
+            }
+          ]
+        },
         "population": {
           "ageDistributionName": "United States of America",
           "caseCountsName": "USA-Florida",
@@ -162,68 +174,6 @@
       },
       "name": "USA-Florida"
     },
-    {
-			"data": {
-				"epidemiological": {
-					"hospitalStayDays": 3.0,
-					"icuStayDays": 14.0,
-					"infectiousPeriodDays": 3.0,
-					"latencyDays": 3.0,
-					"overflowSeverity": 2.0,
-					"peakMonth": 0,
-					"r0": {
-						"begin": 4.08,
-						"end": 4.98
-					},
-					"seasonalForcing": 0.0
-				},
-				"mitigation": {
-					"mitigationIntervals": [
-						{
-							"color": "#cccccc",
-							"name": "Social Distancing",
-							"timeRange": {
-								"begin": "2020-03-24",
-								"end": "2020-06-01"
-							},
-							"transmissionReduction": {
-								"begin": 75.0,
-								"end": 85.0
-							}
-            },
-            {
-							"color": "#00FFFF",
-							"name": "Mask Wearing",
-							"timeRange": {
-								"begin": "2020-06-01",
-								"end": "2020-08-01"
-							},
-							"transmissionReduction": {
-								"begin": 50.0,
-								"end": 60.0
-							}
-						}
-					]
-				},
-				"population": {
-					"ageDistributionName": "United States of America",
-					"caseCountsName": "USA-Florida",
-					"hospitalBeds": 1000,
-					"icuBeds": 100,
-					"importsPerDay": 0.1,
-					"initialNumberOfCases": 1,
-					"populationServed": 293582
-				},
-				"simulation": {
-					"numberStochasticRuns": 15,
-					"simulationTimeRange": {
-						"begin": "2020-02-08",
-						"end": "2020-08-31"
-					}
-				}
-			},
-			"name": "USA-Florida-Leon-County"
-		},
     {
       "data": {
         "epidemiological": {
