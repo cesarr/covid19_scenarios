@@ -1,2 +1,2 @@
 (self.webpackJsonp=self.webpackJsonp||[]).push([["polyfills/map"],{"./node_modules/core-js/es/map/index.js":function(e,s,o){o("./node_modules/core-js/modules/es.map.js"),o("./node_modules/core-js/modules/es.object.to-string.js"),o("./node_modules/core-js/modules/es.string.iterator.js"),o("./node_modules/core-js/modules/web.dom-collections.iterator.js");var d=o("./node_modules/core-js/internals/path.js");e.exports=d.Map}}]);
-//# sourceMappingURL=/sourcemaps/map.808a8388.js.map
+//# sourceMappingURL=/static/sourcemaps/map.808a8388.js.map

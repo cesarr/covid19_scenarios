@@ -1,2 +1,2 @@
 (self.webpackJsonp=self.webpackJsonp||[]).push([["polyfills/object-entries"],{"./node_modules/core-js/es/object/entries.js":function(e,s,o){o("./node_modules/core-js/modules/es.object.entries.js");var n=o("./node_modules/core-js/internals/path.js");e.exports=n.Object.entries}}]);
-//# sourceMappingURL=/sourcemaps/object-entries.ed45aba8.js.map
+//# sourceMappingURL=/static/sourcemaps/object-entries.ed45aba8.js.map
