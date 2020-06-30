@@ -13,9 +13,9 @@
     "static:clean":"rm -r ./static/*",
     "dashboard:compile": "cross-env NODE_ENV=production BABEL_ENV=production NODE_OPTIONS=--max_old_space_size=8192 webpack --config config/webpack/webpack.client.babel.ts",
     "venv:move:in":"mv -i ../venv ./venv",
-    "content:move": "mv -i ./static/static/content ./static/ && rm -r ./static/static",
+    "static:moves": "mv ./static/static/sourcemaps ./static/ && mv ./static/static/content ./static/ && mv ./static/static/assets ./static/ && rm -r ./static/static",
     "index:move": "mv -i ./static/index.html ./templates/index.html",
-    "build:moves": "yarn venv:move:in && yarn content:move && yarn index:move",
+    "build:moves": "yarn venv:move:in && yarn static:moves && yarn index:move",
     "dashboard:build": "yarn venv:move:out && yarn static:clean && yarn schema:totypes && yarn dashboard:compile && yarn build:moves",
 
     "flask:dev":"FLASK_APP=application.py FLASK_ENV=development flask run",

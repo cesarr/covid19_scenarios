@@ -34,7 +34,7 @@ export function NavigationBarDisconnected({ pathname }: NavigationBarProps) {
   const navLinksLeft = useMemo(
     () => ({
       '/': t('Outbreak Explorer'),
-      // '/about': t('About'),
+      '/about': t('About'),
       // '/faq': t('FAQ'),
       // '/updates': t('Updates'),
       // '/team': t('Team'),
