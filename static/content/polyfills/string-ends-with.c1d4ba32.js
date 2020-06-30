@@ -1,2 +1,2 @@
 (self.webpackJsonp=self.webpackJsonp||[]).push([["polyfills/string-ends-with"],{"./node_modules/core-js/es/string/ends-with.js":function(n,e,s){s("./node_modules/core-js/modules/es.string.ends-with.js");var o=s("./node_modules/core-js/internals/entry-unbind.js");n.exports=o("String","endsWith")},"./node_modules/core-js/internals/entry-unbind.js":function(n,e,s){var o=s("./node_modules/core-js/internals/global.js"),t=s("./node_modules/core-js/internals/function-bind-context.js"),r=Function.call;n.exports=function(n,e,s){return t(r,o[n].prototype[e],s)}}}]);
-//# sourceMappingURL=/sourcemaps/string-ends-with.c1d4ba32.js.map
+//# sourceMappingURL=/static/sourcemaps/string-ends-with.c1d4ba32.js.map

@@ -222,7 +222,7 @@ export default {
       ...webpackLoadAssets({
         isDev: development,
         inlineSmallerThan: 0,
-        subdirectory: 'assets',
+        subdirectory: 'static/assets',
       }),
     ],
   },
@@ -411,7 +411,7 @@ export default {
     }),
 
     new webpack.SourceMapDevToolPlugin({
-      filename: 'sourcemaps/[filebase].map[query]',
+      filename: 'static/sourcemaps/[filebase].map[query]',
       publicPath: '/',
       // eslint-disable-next-line @typescript-eslint/ban-ts-comment
       // @ts-ignore: BUG: This parameter is missing in @types/webpack declarations
