@@ -20,4 +20,7 @@ node_modules
 *.ipynb
 .ipynb_checkpoints
 venv
-static
+static/assets
+static/content
+static/data
+static/sourcemaps
