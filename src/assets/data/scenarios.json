@@ -184,6 +184,80 @@
           "overflowSeverity": 2.0,
           "peakMonth": 0,
           "r0": {
+            "begin": 3.3,
+            "end": 4.03
+          },
+          "seasonalForcing": 0.0
+        },
+        "mitigation": {
+          "mitigationIntervals": [
+            {
+              "color": "#cccccc",
+              "name": "Social Distancing",
+              "timeRange": {
+                "begin": "2020-03-27T16:00:00.000Z",
+                "end": "2020-05-03T16:00:00.000Z"
+              },
+              "transmissionReduction": {
+                "begin": 65,
+                "end": 80
+              }
+            },
+            {
+              "color": "#00FFFF",
+              "name": "Recovery Phase 1",
+              "timeRange": {
+                "begin": "2020-05-04T00:00:00.000Z",
+                "end": "2020-06-04T16:00:00.000Z"
+              },
+              "transmissionReduction": {
+                "begin": 70,
+                "end": 80
+              }
+            },
+            {
+              "color": "#00FFFF",
+              "name": "Recovery Phase 2",
+              "timeRange": {
+                "begin": "2020-06-05T00:00:00.000Z",
+                "end": "2020-07-04T00:00:00.000Z"
+              },
+              "transmissionReduction": {
+                "begin": 50,
+                "end": 60
+              }
+            }
+          ]
+        },
+        "population": {
+          "ageDistributionName": "Leon County, Florida",
+          "caseCountsName": "USA-Florida-Leon-County",
+          "hospitalBeds": 1000,
+          "icuBeds": 100,
+          "importsPerDay": 0.1,
+          "initialNumberOfCases": 11,
+          "populationServed": 293582
+        },
+        "simulation": {
+          "numberStochasticRuns": 15,
+          "simulationTimeRange": {
+            "begin": "2020-03-01",
+            "end": "2020-08-31"
+          }
+        }
+      },
+      "name": "USA-Florida-Leon-County"
+    },
+    {
+      "data": {
+        "epidemiological": {
+          "hospitalStayDays": 3.0,
+          "icuStayDays": 14.0,
+          "infectiousPeriodDays": 3.0,
+          "latencyDays": 3.0,
+          "overflowSeverity": 2.0,
+          "peakMonth": 0,
+          "r0": {
             "begin": 2.82,
             "end": 3.44
           },

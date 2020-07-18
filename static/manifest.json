@@ -1,6 +1,6 @@
 {
-  "name": "COVID-19 Scenarios",
-  "short_name": "COVID-19 Scenarios",
+  "name": "Outbreak Explorer",
+  "short_name": "Outbreak Explorer",
   "theme_color": "#343a40",
   "background_color": "#000007",
   "display": "browser",

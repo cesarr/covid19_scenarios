@@ -2690,6 +2690,20 @@
     },
     {
       "data": [
+        { "ageGroup": "0-9", "population": 15047.5 },
+        { "ageGroup": "10-19", "population": 29867 },
+        { "ageGroup": "20-29", "population": 49574 },
+        { "ageGroup": "30-39", "population": 44505.5 },
+        { "ageGroup": "40-49", "population": 36250 },
+        { "ageGroup": "50-59", "population": 45781.5 },
+        { "ageGroup": "60-69", "population": 23696.5 },
+        { "ageGroup": "70-79", "population": 18959 },
+        { "ageGroup": "80+", "population": 20505.5 }
+      ],
+      "name": "Leon County, Florida"
+    },
+    {
+      "data": [
         { "ageGroup": "0-9", "population": 473071 },
         { "ageGroup": "10-19", "population": 478929 },
         { "ageGroup": "20-29", "population": 511559 },
