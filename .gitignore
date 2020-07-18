@@ -24,3 +24,9 @@ __pycache__
 .ipynb_checkpoints
 *.ipynb
 .flaskenv
+
+# Outbreak Explorer
+static/assets
+static/content
+static/data
+static/sourcemaps
